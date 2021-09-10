@@ -36,8 +36,8 @@ export const Count: FC<IProps> = ({uname}) => {
     dispatch(changeJina(selectVal,"Hook里的减"))
   }
   // 函数式异步更新方法
-  const asyAdd = (data: number, time: number) => {
-    dispatch(asyncAdd(data,time))
+  const asyAdd = () => {
+    dispatch(asyncAdd(selectVal,1000))
   }
   return <>
   <Header />
@@ -53,7 +53,7 @@ export const Count: FC<IProps> = ({uname}) => {
     </select>
     <button disabled={btn} onClick={clickHandle}>+{selectVal}</button>
     <button disabled={btn}  onClick={jianHandle}>-{selectVal}</button>
-    <button  onClick={()=> asyAdd(2,1000)}>异步更新整除2不更</button>
+    <button  onClick={asyAdd}>异步更新整除2不更</button>
   <Footer/>
   </>
 }
