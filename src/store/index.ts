@@ -5,7 +5,9 @@ import Reducer from './reducers'
 import { actionLog } from './middlewares/actionLog'
 
 
-
+/**
+ * 第一个为总reducer, 第二个为中间件
+ */
 const store = createStore(Reducer,composeWithDevTools(applyMiddleware(thunk,actionLog)))
 
 

@@ -1,5 +1,5 @@
 import React, { FC, useEffect, useRef, useState } from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useStore } from 'react-redux'
 import { Dispatch } from 'redux'
 import { Header, Footer} from '../components'
 import { asyncAdd, changeAdd, changeJina, CountAction } from '../store/actions/countAction'
@@ -29,6 +29,14 @@ export const Count: FC<IProps> = ({uname}) => {
 // 这种会推断为any 不过不影响
   const dispatch = useDispatch()
   // console.log(dispatch,'+++')
+
+// store 钩子
+// const store = useStore()
+// console.log(store.getState(),'------hook')
+
+
+
+
   const clickHandle = () => {
     dispatch(changeAdd(selectVal))
   }
