@@ -7,7 +7,7 @@ function App() {
 
   return (
     <div className="App">
-      <Count />
+      <Count uname={"hsueh"}/>
      <hr />
      <CountComponent sname={"hsueh"}/>
     </div>

@@ -1,10 +1,14 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { FC, useEffect, useRef, useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { Dispatch } from 'redux'
 import { Header, Footer} from '../components'
 import { asyncAdd, changeAdd, changeJina, CountAction } from '../store/actions/countAction'
 import { useSelector } from '../store/useSelect'
-export const Count = () => {
+
+interface IProps {
+  uname: string
+}
+export const Count: FC<IProps> = ({uname}) => {
 
   const [num, setNum] = useState(0)
   const [selectVal, setSelectVal] = useState(0)
@@ -38,6 +42,7 @@ export const Count = () => {
   return <>
   <Header />
   <p>这是Hook组件</p>
+  <p>props &nbsp; {uname}</p>
   <p>state &nbsp; {num}</p>
     <div>redux &nbsp;{Count.count}</div>
     <select onChange={(e)=>setSelectVal(Number(e.target.value))} >

@@ -37,9 +37,9 @@ class CountComponent extends Component<IProps, IState> {
     console.log(this)
     return <>
       <p>这是class组件</p>
-      <div>这是redux里的数据&nbsp; &nbsp; &nbsp; &nbsp; {this.props.num.count}</div>
-      <div>传递的参数&nbsp; &nbsp; &nbsp; &nbsp; {this.props.sname}</div>
+      <div>props传递的数据&nbsp; &nbsp; &nbsp; &nbsp; {this.props.sname}</div>
       <p>state里的数据&nbsp; &nbsp; &nbsp; &nbsp; {this.state.num}</p>
+      <div>这是redux里的数据&nbsp; &nbsp; &nbsp; &nbsp; {this.props.num.count}</div>
       <button onClick={()=>this.props.add(3)}>+3</button>
       <button onClick={()=> this.props.jian(6)}>-6</button>
       <button onClick={this.asyncHandle(3,500)}>异步更新,被2整除不更</button>
