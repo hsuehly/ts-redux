@@ -8,8 +8,6 @@ ts类型导入 在后面添加 type 示列:
 ````
 
 
-
-
                            Redux工作流
 
 ![image-20210913115656770](https://cdn.jsdelivr.net/gh/hsuehly/blogimg/markdown/image-20210913115656770.png)
