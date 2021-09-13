@@ -1,9 +1,9 @@
 import React, { FC, useEffect, useRef, useState } from 'react'
-import { Dispatch } from 'redux'
+import { useDispatch } from 'react-redux'
 import { Header, Footer} from '../components'
-import { asyncAdd, changeAdd, changeJina, CountAction } from '../store/actions/countAction'
-import { MainLaout } from '../layout/MainLayout' 
-import { useSelector, useDispatch } from '../store/hook'
+import { asyncAdd, changeAdd, changeJina} from '../store/actions/countAction'
+import { useSelector } from '../store/hook'
+
 interface IProps {
   uname: string
 }
@@ -44,25 +44,23 @@ export const Count: FC<IProps> = ({uname}) => {
   }
   // 函数式异步更新方法
   const asyAdd = () => {
-    dispatch(asyncAdd(selectVal,1000))
+    dispatch(asyncAdd(selectVal,500))
   }
-  return (
-    <MainLaout>
-    <p>这是Hook组件</p>
-    <p>props &nbsp; {uname}</p>
-    <p>state &nbsp; {num}</p>
-      <div>redux &nbsp;{Count.count}</div>
-      <select onChange={(e)=>setSelectVal( + e.target.value)} >
-        <option value="0">0</option>
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-      </select>
-      <button disabled={btn} onClick={clickHandle}>+{selectVal}</button>
-      <button disabled={btn}  onClick={jianHandle}>-{selectVal}</button>
-      <button  onClick={asyAdd}>异步更新整除2不更</button>
-      </MainLaout >
-  )
-
-  
+  return <>
+  <Header />
+  <p>这是Hook组件</p>
+  <p>props &nbsp; {uname}</p>
+  <p>state &nbsp; {num}</p>
+    <div>redux &nbsp;{Count.count}</div>
+    <select onChange={(e)=>setSelectVal(Number(e.target.value))} >
+      <option value="0">0</option>
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+    </select>
+    <button disabled={btn} onClick={clickHandle}>+{selectVal}</button>
+    <button disabled={btn}  onClick={jianHandle}>-{selectVal}</button>
+    <button  onClick={asyAdd}>异步更新整除2不更</button>
+  <Footer/>
+  </>
 }

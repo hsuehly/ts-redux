@@ -1,11 +1,10 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { Action, Dispatch } from 'redux'
-import { ThunkDispatch } from 'redux-thunk'
-import { RootState } from '../store'
+import type { ThunkDispatch } from 'redux-thunk'
+import type { RootState } from '../store'
 import { asyncAdd, changeAdd, changeJina, CountAction } from '../store/actions/countAction'
-import { OtherLayout } from '../layout/OtherLaout'
-// 可以使用工具泛型函数获取mapStateToProps 的定义类型
+
+// 可以使用工具泛型函数获取mapStateToProps和 mapDispatchToProps 的定义类型
 interface IProps extends ReturnType<typeof mapStateToProps>,
  ReturnType<typeof mapDispatchToProps> {
   sname: string;
@@ -25,7 +24,6 @@ class CountComponent extends Component<IProps, IState> {
   }
 
   asyncHandle = (data: number,time: number )=> {
-    console.log("sss")
     return ()=> {
       this.props.asyncAdd(data, time)
     }
@@ -35,7 +33,7 @@ class CountComponent extends Component<IProps, IState> {
 
   render() {
     console.log(this)
-    return <OtherLayout>
+    return <>
       <p>这是class组件</p>
       <div>props传递的数据&nbsp; &nbsp; &nbsp; &nbsp; {this.props.sname}</div>
       <p>state里的数据&nbsp; &nbsp; &nbsp; &nbsp; {this.state.num}</p>
@@ -43,7 +41,7 @@ class CountComponent extends Component<IProps, IState> {
       <button onClick={()=>this.props.add(3)}>+3</button>
       <button onClick={()=> this.props.jian(6)}>-6</button>
       <button onClick={this.asyncHandle(3,500)}>异步更新,被2整除不更</button>
-    </OtherLayout>
+    </>
   }
 
 }

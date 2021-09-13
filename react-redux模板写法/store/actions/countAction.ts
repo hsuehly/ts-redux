@@ -1,6 +1,6 @@
-import { ThunkAction } from "redux-thunk"
-import { AppThunk, RootState } from "../index"
-import { Count } from "../reducers/countReducer"
+import type { ThunkAction } from "redux-thunk"
+import type {  AppThunk, RootState } from "../index"
+import  { Count } from "../reducers/countReducer"
 
 /**
  * 定义hangeadd的类型
@@ -49,13 +49,14 @@ export const changeJina = (num: number,str: string): ChangeJianAction => {
  * @returns  ThunkAction 1,参数为输出类型 2,store的state  4,action中额外的参数
  */
 
-export const asyncAdd = (data: number, time: number): AppThunk => (dispatch, getState)=> {
+export const asyncAdd = (data: number, time: number): AppThunk=> (dispatch, getState)=> {
   const { Count:{count} } = getState()
 
   if(count %2 === 0) {
     console.log("2的倍数不更新")
     return
   }
+  // 然后调用action的方法更改state 和vuex中action用法差不多
   setTimeout(()=>{
     dispatch(changeAdd(data))
   },time)

@@ -1,12 +1,13 @@
-import { CountAction } from "../actions/countAction"
+import type { CountAction } from "../actions/countAction"
 
-
+//ts中的枚举
 export enum Count {
   ADD = "ADD",
   JIAN = "JIAN",
   // ASYNC = "ASYNC"
 
 }
+//ts中的接口 关键词interface
 // 定义初始值的类型
 export interface InitState {
   count: number
